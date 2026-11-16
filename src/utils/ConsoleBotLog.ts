@@ -1,4 +1,3 @@
-
 export function botLog(type: number, msg: string, array: object){
   let prefix: string = ''
   switch (type) {

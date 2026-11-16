@@ -1,12 +1,14 @@
 import env from 'dotenv'
 env.config()
 
+// changes an string to an number
 function confirtToNum(num: any): number{
   const port = Number(num)
   if (Number.isNaN(port)) throw new Error('minecraft port is not an valid number in the .env file')
   return port
 }
 
+// bot settings
 export const botEnvSettings = {
   proxy: {
     host: '',

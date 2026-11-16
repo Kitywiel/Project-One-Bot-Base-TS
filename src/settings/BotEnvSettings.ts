@@ -7,14 +7,20 @@ function confirtToNum(num: any): number{
   if (Number.isNaN(port)) throw new Error('minecraft port is not an valid number in the .env file')
   return port
 }
+function makeItString(tar: any): string{
+  if (tar != String) {
+    return tar.toString
+  }
+  return tar
+}
 
 // bot settings
 export const botEnvSettings = {
   proxy: {
-    host: '',
-    port: confirtToNum(process.env['']),
-    username: '',
-    passcode: ''
+    host: process.env['PROXY_HOST'],
+    port: confirtToNum(process.env['PROXY_PORT']),
+    username: makeItString(process.env['PROXY_USERNAME']),
+    passcode: makeItString(process.env['PROXY_PASSCODE']),
   },
   mc: {
     host: process.env['MC_HOST'],

@@ -6,10 +6,10 @@ function isProxyOn() {
   if (botEnvSettings.proxy.host && botEnvSettings.proxy.port) {
     if (!Number.isInteger(botEnvSettings.proxy.port)) return null
     const result = {
-      host: botEnvSettings.proxy.host.toString(),
+      host: botEnvSettings.proxy.host?.toString(),
       port: botEnvSettings.proxy.port,
-      username: botEnvSettings.proxy.username.toString(),
-      password: botEnvSettings.proxy.passcode.toString()
+      username: botEnvSettings.proxy.username,
+      password: botEnvSettings.proxy.passcode,
     }
     return result
   }

@@ -1,4 +1,5 @@
 import mineflayer from 'mineflayer'
+import { proxyConnection } from './ProxyConnectionHandler.js'
 
 // checks if the host is an string
 function hostCheck(host: any): string {
@@ -24,14 +25,15 @@ function authCheck(auth: any) {
 
   else throw new Error('selected auth is not an valid auth')
 }
+const settings = {
 
-
-
+// makes and exports the bot
 export const bot = mineflayer.createBot({
-  host: hostCheck('localhost'),
-  port: portCheck(3423),
+  host: settings.host,
+  port: settings.port,
   username: usernameCheck('test'),
   auth: authCheck(''),
+  connect: (client) =>{
+    proxyConnection(client, settings)
+  }
 })
-
-//"mojang" | "microsoft" | "offline"

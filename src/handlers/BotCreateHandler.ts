@@ -26,6 +26,8 @@ function authCheck(auth: any) {
 
   else throw new Error('selected auth is not an valid auth')
 }
+
+// setting for the bot
 const settings = {
   host: hostCheck(botEnvSettings.mc.host),
   port: portCheck(botEnvSettings.mc.port),

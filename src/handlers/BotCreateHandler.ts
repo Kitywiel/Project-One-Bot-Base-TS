@@ -26,6 +26,9 @@ function authCheck(auth: any) {
   else throw new Error('selected auth is not an valid auth')
 }
 const settings = {
+  host: hostCheck('localhost'),
+  port: portCheck(3423)
+}
 
 // makes and exports the bot
 export const bot = mineflayer.createBot({

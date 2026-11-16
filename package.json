@@ -1,0 +1,25 @@
+{
+  "name": "project-one-bot-base-ts",
+  "version": "1.0.0",
+  "description": "this is the official repo for Project One Bot Nightly",
+  "homepage": "https://github.com/Kitywiel/Project-One-Bot-Base-TS#readme",
+  "bugs": {
+    "url": "https://github.com/Kitywiel/Project-One-Bot-Base-TS/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kitywiel/Project-One-Bot-Base-TS.git"
+  },
+  "license": "GPL-3.0-only",
+  "author": "Kitywiel",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx tsc && node ./dist/Bot.js"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.10",
+    "mineflayer": "^4.39.0",
+    "typescript": "^7.0.2"
+  }
+}

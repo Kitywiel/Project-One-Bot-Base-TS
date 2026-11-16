@@ -1,8 +1,8 @@
 import { SocksClient } from "socks";
-import { botEnvSettings } from "./BotEnvSettings.js";
+import { botEnvSettings } from "../settings/BotEnvSettings.js";
 
-function isProxyOn(){
-  if (botEnvSettings.proxy.host && botEnvSettings.proxy.port){
+function isProxyOn() {
+  if (botEnvSettings.proxy.host && botEnvSettings.proxy.port) {
     if (!Number.isInteger(botEnvSettings.proxy.port)) return null
     const result = {
       host: botEnvSettings.proxy.host.toString(),
@@ -17,7 +17,7 @@ function isProxyOn(){
 const proxy = isProxyOn()
 
 export function proxyConnection(client: any, server: any) {
-  if (!proxy){
+  if (!proxy) {
     client.setSocket(require('net').connect(server.port, server.host))
     return
   }

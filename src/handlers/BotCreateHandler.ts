@@ -1,6 +1,6 @@
 import mineflayer from 'mineflayer'
 import { proxyConnection } from './ProxyConnectionHandler.js'
-import { botEnvSettings } from './BotEnvSettings.js'
+import { botEnvSettings } from '../settings/BotEnvSettings.js'
 
 // checks if the host is an string
 function hostCheck(host: any): string {
@@ -39,7 +39,7 @@ export const bot = mineflayer.createBot({
   port: settings.port,
   username: settings.username,
   auth: settings.auth,
-  connect: (client) =>{
+  connect: (client) => {
     proxyConnection(client, settings)
   }
 })

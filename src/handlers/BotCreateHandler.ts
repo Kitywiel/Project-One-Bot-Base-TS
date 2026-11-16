@@ -1,5 +1,6 @@
 import mineflayer from 'mineflayer'
 import { proxyConnection } from './ProxyConnectionHandler.js'
+import { botEnvSettings } from './BotEnvSettings.js'
 
 // checks if the host is an string
 function hostCheck(host: any): string {
@@ -26,16 +27,18 @@ function authCheck(auth: any) {
   else throw new Error('selected auth is not an valid auth')
 }
 const settings = {
-  host: hostCheck('localhost'),
-  port: portCheck(3423)
+  host: hostCheck(botEnvSettings.mc.host),
+  port: portCheck(botEnvSettings.mc.port),
+  auth: authCheck(botEnvSettings.mc.auth),
+  username: usernameCheck(botEnvSettings.mc.username)
 }
 
 // makes and exports the bot
 export const bot = mineflayer.createBot({
   host: settings.host,
   port: settings.port,
-  username: usernameCheck('test'),
-  auth: authCheck(''),
+  username: settings.username,
+  auth: settings.auth,
   connect: (client) =>{
     proxyConnection(client, settings)
   }

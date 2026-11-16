@@ -1,18 +1,14 @@
 import { SocksClient } from "socks";
-
-const proxyhost = 't'
-const proxyport = 3423
-const proxyusername =''
-const proxypassword =''
+import { botEnvSettings } from "./BotEnvSettings.js";
 
 function isProxyOn(){
-  if (proxyhost && proxyport){
-    if (!Number.isInteger(proxyport)) throw new Error()
+  if (botEnvSettings.proxy.host && botEnvSettings.proxy.port){
+    if (!Number.isInteger(botEnvSettings.proxy.port)) return null
     const result = {
-      host: proxyhost.toString(),
-      port: proxyport,
-      username: proxyusername.toString(),
-      password: proxypassword.toString()
+      host: botEnvSettings.proxy.host.toString(),
+      port: botEnvSettings.proxy.port,
+      username: botEnvSettings.proxy.username.toString(),
+      password: botEnvSettings.proxy.passcode.toString()
     }
     return result
   }

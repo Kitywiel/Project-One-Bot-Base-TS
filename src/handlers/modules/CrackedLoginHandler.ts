@@ -19,6 +19,7 @@ export function crackedLogingHandler(){
     // waits for an message to be send to the bot
     await bot.once('messagestr', (msg: string) => {
       if (loggedIn) return
+      console.log(`[SERVER]> ${msg}`)
 
       // login command detectors
       if (msg.toLowerCase().includes('login')) bot.chat(`/login ${botEnvSettings.mc.password}`);

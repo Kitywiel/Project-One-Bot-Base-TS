@@ -27,6 +27,8 @@ function authCheck(auth: any) {
   else throw new Error('selected auth is not an valid auth')
 }
 
+
+
 // setting for the bot
 const settings = {
   host: hostCheck(botEnvSettings.mc.host),
@@ -41,6 +43,7 @@ export const bot = mineflayer.createBot({
   port: settings.port,
   username: settings.username,
   auth: settings.auth,
+  version: botEnvSettings.mc.version,
   connect: (client) => {
     proxyConnection(client, settings)
   }

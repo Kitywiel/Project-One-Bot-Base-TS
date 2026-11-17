@@ -11,17 +11,15 @@ function checkIfSet(test: string | undefined): string | undefined {
 function isProxyOn() {
   if (botEnvSettings.proxy.host && botEnvSettings.proxy.port) {
     if (!Number.isInteger(botEnvSettings.proxy.port)) return null
-    const result = {
+    return  {
       host: botEnvSettings.proxy.host?.toString(),
       port: botEnvSettings.proxy.port,
       username: checkIfSet(botEnvSettings.proxy.username),
       password: checkIfSet(botEnvSettings.proxy.passcode),
     }
-    return result
   }
-  else return null
+  return null
 }
-
 // botEnvSettings.proxy.username
 
 // declears proxy
@@ -45,9 +43,14 @@ export function proxyConnection(client: any, server: any) {
     destination: {
       host: server.host,
       port: server.port
-    }
+    },
+    timeout: 30000 // 30 second timeout
   })
-  .then(({ socket }) => client.setSocket(socket))
+  .then(({ socket }) => {
+    socket.setKeepAlive(true, 60000) // Enable keep-alive every 60s
+    socket.setTimeout(60000) // 60 second socket timeout
+    client.setSocket(socket)
+  })
   .catch((error) => client.emit("error", error))
 }
 

@@ -6,7 +6,7 @@ export function wisperHandler() {
     const msg = message.toLowerCase().split(' ')
 
     // triggers the shared message handler
-    sharedMessageHandler(1, username, msg)
+    sharedMessageHandler(0, username, msg)
 
   })
 }

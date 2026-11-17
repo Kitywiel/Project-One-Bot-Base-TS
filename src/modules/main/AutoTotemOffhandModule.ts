@@ -30,7 +30,7 @@ export const autoTotemModule = {
       
       try{
         const offhand = bot.inventory.slots[40]
-        if (offhand) return
+        if (offhand?.name === 'totem_of_undying') return
 
         const totum = bot.inventory.items().find(item => item.name === 'totem_of_undying')
         if (!totum) {

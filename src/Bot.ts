@@ -1,8 +1,10 @@
 import { bot } from "./handlers/BotCreateHandler.js";
 import { crackedLogingHandler } from "./handlers/modules/CrackedLoginHandler.js";
+import { initModules } from "./modules/initModules.js";
 
 
 crackedLogingHandler()
+initModules()
 
 bot.on('messagestr', console.log)
 

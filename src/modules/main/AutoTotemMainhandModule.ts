@@ -18,38 +18,50 @@ export const autoTotemMainhandModule = {
     enabled = false
   },
   int:() => {
-    interval = setInterval(async() => {
-      if (!enabled) return
+    interval = setInterval(async () => {
+      if (!enabled || equiping) return;
+
       if (waiting > 0) {
-        waiting--
-        return
+        waiting--;
+        return;
       }
-      if (!equiping) return
-      if (bot.health > 10){
+
+      if (bot.health > 10) {
         bot.setQuickBarSlot(0);
+        return;
       }
-      equiping = true
-      bot.setQuickBarSlot(8);
+
+      const mainhand = bot.inventory.slots[44];
+
+      if (mainhand?.name === 'totem_of_undying') {
+
+        bot.setQuickBarSlot(8);
+        return;
+      }
+      
+      equiping = true;
 
       try {
-        const mainhand = bot.inventory.slots[44]
-        if (mainhand?.name === 'totem_of_undying') return
-
-        const totum = bot.inventory.items().find(item => item.name === 'totem_of_undying')
-
-        if (!totum) {
-          botLog(6, 'No Totums Found waiting 10 seconds')
+        const totem = bot.inventory.items().find(
+          item => item.name === 'totem_of_undying'
+        );
+      
+        if (!totem) {
+          botLog(6, 'No Totems Found, waiting 10 seconds');
           waiting = 200;
-          return
-        };
-        
-        await bot.equip(totum, 'hand')
-        botLog(5, 'Offhand Totem Equipped');
-        
-      } catch(err) {
-        botLog(7, `Totem equip error: ${err}`);
+          return;
+        }
+      
+        await bot.moveSlotItem(totem.slot, 44);
+      
+        bot.setQuickBarSlot(8);
+      
+        botLog(5, 'Emergency Totem Ready');
+      
+      } catch (err) {
+        botLog(7, `Totem error: ${err}`);
       } finally {
-        equiping = false
+        equiping = false;
       }
     }, 25);
   },

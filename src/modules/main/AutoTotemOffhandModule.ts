@@ -20,6 +20,7 @@ export const autoTotemModule = {
   },
   int:() => {
     interval = setInterval(async() => {
+      if (!enabled) return
       if (waiting > 0) {
         waiting--
         return

@@ -19,11 +19,12 @@ export const autoTotemMainhandModule = {
   },
   int:() => {
     interval = setInterval(async() => {
+      if (!enabled) return
       if (waiting > 0) {
         waiting--
         return
       }
-      if (equiping) return
+      if (!equiping) return
       if (bot.health > 10){
         bot.setQuickBarSlot(0);
       }

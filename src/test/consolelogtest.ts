@@ -5,4 +5,5 @@ export function consoleLogTest() {
   botLog(2, 'test')
   botLog(3, 'test')
   botLog(4, 'test')
+  botLog(5, 'test')
 }

@@ -3,9 +3,6 @@ import { botChatSend } from "../handlers/modules/chat/MessageHandler.js";
 import { friendsList } from "../settings/Players/FriendsList.js";
 import { botLog } from "../utils/ConsoleBotLog.js";
 
-
-
-
 bot.on('playerJoined', (player: any) => {
   if(friendsList.includes(player)){
     botChatSend(`My friend ${player} joined the game`)

@@ -11,5 +11,6 @@ bot.on('playerJoined', (player: any) => {
 })
 
 bot.on('playerLeft', (player: any) => {
+  
   botLog(9, `${player} Left The Game`)
 })

@@ -6,4 +6,8 @@ export function consoleLogTest() {
   botLog(3, 'test')
   botLog(4, 'test')
   botLog(5, 'test')
+  botLog(6, 'test')
+  botLog(7, 'test')
+  botLog(8, 'test')
+  botLog(9, 'test')
 }

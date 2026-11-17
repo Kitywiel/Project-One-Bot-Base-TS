@@ -53,7 +53,7 @@ async function equipBestArmor(ranking: string[], slot: number, destination: any)
   }
 }
 
-export const autoTotemMainhandModule = {
+export const autoArmorModule = {
     toggle:() => {
     enabled = !enabled
     return enabled

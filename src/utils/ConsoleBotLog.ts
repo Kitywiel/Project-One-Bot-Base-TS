@@ -8,6 +8,8 @@ export function botLog(type: number, msg: string, array?: object){
     case 5: prefix = '\x1b[1;96;49mACTION'; break;
     case 6: prefix = '\x1b[1;31;49mFAILED'; break;
     case 7: prefix = '\x1b[1;31;49mERROR';break;
+    case 8: prefix = '\x1b[1;32mJOINED'; break;
+    case 9: prefix = '\x1b[1;31mLEFT'; break;
     default: prefix = 'UNSET'; break;
   }
   if (msg && array) console.log(`\x1b[1;90m[\x1b[1;95mONE BOT NIGHTLY\x1b[1;90m](${prefix}\x1b[1;90m)>\x1b[0m ${msg} || ${array}`)

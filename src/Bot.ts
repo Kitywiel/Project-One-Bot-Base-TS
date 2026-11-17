@@ -1,6 +1,6 @@
 import { bot } from "./handlers/BotCreateHandler.js";
-import { chatHandler } from "./handlers/modules/chat/ChatTriggerHandler.js";
-import { wisperHandler } from "./handlers/modules/chat/WisperTriggerHandler.js";
+import { chatHandler } from "./triggers/ChatTrigger.js";
+import { wisperHandler } from "./triggers/WisperTrigger.js";
 import { crackedLogingHandler } from "./handlers/modules/CrackedLoginHandler.js";
 import { initModules } from "./modules/initModules.js";
 

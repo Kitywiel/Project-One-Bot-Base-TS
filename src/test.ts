@@ -1,4 +1,4 @@
-import { consoleLogTest } from "./test/consolelogtest.js";
+import { consoleLogTest } from "./test/ConsoleLogTest.js";
 
 
 consoleLogTest()

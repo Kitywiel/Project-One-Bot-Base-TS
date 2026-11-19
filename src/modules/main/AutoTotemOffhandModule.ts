@@ -1,7 +1,7 @@
 import { bot } from "../../handlers/BotCreateHandler.js";
 import { botLog } from "../../utils/ConsoleBotLog.js";
 
-let enabled: boolean = false;
+let enabled: boolean = true;
 let equiping: boolean = false
 let waiting: number = 0;
 let interval: ReturnType<typeof setInterval> | null = null;
@@ -21,17 +21,17 @@ export const autoTotemModule = {
   int:() => {
     interval = setInterval(async() => {
       if (!enabled) return
+      if (equiping) return
       if (waiting > 0) {
         waiting--
         return
       }
-
-      if (equiping) return
-      equiping = true
       
-      try{
-        const offhand = bot.inventory.slots[40]
+      equiping = true
+      const offhand = bot.inventory.slots[45]
         if (offhand?.name === 'totem_of_undying') return
+      try{
+        
 
         const totum = bot.inventory.items().find(item => item.name === 'totem_of_undying')
         if (!totum) {

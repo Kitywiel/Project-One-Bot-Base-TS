@@ -1,7 +1,7 @@
 import { bot } from "../../handlers/BotCreateHandler.js";
 import { botLog } from "../../utils/ConsoleBotLog.js";
 
-let enabled: boolean = false;
+let enabled: boolean = true;
 let equiping: boolean = false;
 let waiting: number = 0;
 let interval: ReturnType<typeof setInterval> | null = null;
@@ -26,7 +26,7 @@ export const autoTotemMainhandModule = {
         return;
       }
 
-      if (bot.health > 10) {
+      if (bot.health > 20) {
         bot.setQuickBarSlot(0);
         return;
       }
@@ -34,7 +34,6 @@ export const autoTotemMainhandModule = {
       const mainhand = bot.inventory.slots[44];
 
       if (mainhand?.name === 'totem_of_undying') {
-
         bot.setQuickBarSlot(8);
         return;
       }

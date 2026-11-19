@@ -2,5 +2,5 @@ export const friendsList = [
   'kitywiel',
   '2b2gay',
   'nya_bot',
-  'snort__'
+  'Snort__'
 ]

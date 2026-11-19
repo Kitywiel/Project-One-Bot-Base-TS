@@ -1,7 +1,7 @@
 import { bot } from "../../handlers/BotCreateHandler.js";
 import { botLog } from "../../utils/ConsoleBotLog.js";
 
-let enabled: boolean = false;
+let enabled: boolean = true;
 let equiping: boolean = false;
 let interval: ReturnType<typeof setInterval> | null = null;
 
@@ -35,6 +35,7 @@ const bootsRanking = [
 ];
 
 async function equipBestArmor(ranking: string[], slot: number, destination: any) {
+
   const armor = bot.inventory.items()
     .filter(item => ranking.includes(item.name))
     .sort((a, b) => ranking.indexOf(a.name) - ranking.indexOf(b.name));
@@ -80,7 +81,7 @@ export const autoArmorModule = {
     } finally {
       equiping = false;
     }
-    }, 500);
+    }, 10000);
   },
   stopint:() => {
     if (interval) {
